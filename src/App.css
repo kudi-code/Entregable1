@@ -17,7 +17,7 @@
 }
 .card{
   width: 50vw;
-  height: 250px;
+  /* height: 250px; */
   margin: 30vh;
   background-color: rgb(255, 235, 235);
   text-align: left;
