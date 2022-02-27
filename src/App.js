@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import quotes from './quotes.json'
+import QuoteBox from './components/QuoteBox';
 import './App.css';
+import { useState } from 'react';
+
+function random(length){
+  return Math.floor(Math.random() * length);
+}
+const colors = ["#845ec2", "#2c73d2", "#008f7a"]
+let randomColor = colors[random(colors.length)]
+document.body.style = `background: ${randomColor}` 
+
 
 function App() {
+  const [quote, setQuote] = useState(quotes[random(quotes.length)])
+
+    const togglequote = () =>{ 
+        randomColor = colors[random(colors.length)]
+        setQuote(quotes[random(quotes.length)]);
+        document.body.style = `background: ${randomColor}` 
+        
+        console.log(quote)
+    }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <QuoteBox toggleQuoteBox={togglequote} phrase={quote.quote} author={quote.author} color={randomColor} ></QuoteBox>
     </div>
   );
 }
